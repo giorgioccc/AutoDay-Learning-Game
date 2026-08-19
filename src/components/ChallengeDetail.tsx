@@ -20,7 +20,7 @@ export function ChallengeDetail({ challenge }: { challenge: Challenge }) {
   const timer = useSessionTimer();
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 px-5 py-10 sm:px-6 sm:py-16">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-5 py-10 sm:px-6 sm:py-16">
       <header className="flex items-start justify-between gap-4">
         <Link
           href="/"

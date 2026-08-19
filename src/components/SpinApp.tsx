@@ -57,7 +57,7 @@ export function SpinApp() {
   }, [challenge]);
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-10 px-5 py-10 sm:px-6 sm:py-16">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-5 py-10 sm:px-6 sm:py-16">
       <header className="flex items-start justify-between gap-4">
         <div>
           <p className="text-text font-mono text-lg font-semibold tracking-tight">
@@ -75,7 +75,7 @@ export function SpinApp() {
       </header>
 
       {!challenge && (
-        <p className="text-text-muted max-w-xl leading-relaxed">
+        <p className="text-text-muted max-w-2xl leading-relaxed">
           {ui.intro[lang]}
         </p>
       )}
