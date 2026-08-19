@@ -12,10 +12,12 @@ import { useSessionTimer } from "@/lib/timer";
 import { ChallengeCard } from "./ChallengeCard";
 import { Filters } from "./Filters";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { SpinReel } from "./SpinReel";
 import { ThemeSwitch } from "./ThemeSwitch";
 import { TimerBadge, TimerLauncher } from "./SessionTimer";
 
-const SPIN_MS = 620;
+/** Long enough for the SpinReel to tick through its whole word list. */
+const SPIN_MS = 1000;
 
 export function SpinApp() {
   const { lang } = useLanguage();
@@ -162,6 +164,7 @@ export function SpinApp() {
         aria-busy={spinning}
         className="outline-none"
       >
+        {spinning && <SpinReel pool={pool} lang={lang} />}
         {challenge && !spinning && (
           <ChallengeCard
             challenge={challenge}

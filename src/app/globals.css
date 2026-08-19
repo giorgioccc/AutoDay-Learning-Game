@@ -185,6 +185,23 @@ details[open] > .reveal-panel {
   animation: autoday-fade-up 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 
+/* SpinReel: each word is a fresh element (React key change), so this just
+   needs to play once per mount rather than track any spin/settle state. */
+@keyframes autoday-reel-tick {
+  0% {
+    opacity: 0.35;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reel-tick {
+  animation: autoday-reel-tick 100ms ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
