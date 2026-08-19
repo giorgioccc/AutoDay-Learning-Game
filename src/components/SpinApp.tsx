@@ -12,6 +12,7 @@ import { useSessionTimer } from "@/lib/timer";
 import { ChallengeCard } from "./ChallengeCard";
 import { Filters } from "./Filters";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { ThemeSwitch } from "./ThemeSwitch";
 import { TimerBadge, TimerLauncher } from "./SessionTimer";
 
 const SPIN_MS = 620;
@@ -67,7 +68,10 @@ export function SpinApp() {
             {ui.tagline[lang]}
           </p>
         </div>
-        <LanguageSwitch />
+        <div className="flex items-center gap-3">
+          <ThemeSwitch />
+          <LanguageSwitch />
+        </div>
       </header>
 
       {!challenge && (

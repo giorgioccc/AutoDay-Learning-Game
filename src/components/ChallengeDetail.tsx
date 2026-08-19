@@ -8,6 +8,7 @@ import { useLanguage } from "@/lib/language";
 import { useSessionTimer } from "@/lib/timer";
 import { ChallengeCard } from "./ChallengeCard";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { ThemeSwitch } from "./ThemeSwitch";
 import { TimerBadge, TimerLauncher } from "./SessionTimer";
 
 /**
@@ -28,7 +29,10 @@ export function ChallengeDetail({ challenge }: { challenge: Challenge }) {
           AutoDay
           <span className="caret ml-1" aria-hidden="true" />
         </Link>
-        <LanguageSwitch />
+        <div className="flex items-center gap-3">
+          <ThemeSwitch />
+          <LanguageSwitch />
+        </div>
       </header>
 
       <ChallengeCard challenge={challenge} lang={lang} titleAs="h1" />

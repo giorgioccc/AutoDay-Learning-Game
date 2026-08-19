@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 
 import { LANG_STORAGE_KEY } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/site";
+import { THEME_STORAGE_KEY } from "@/lib/theme";
 import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -72,6 +73,13 @@ const langScript = `(function(){try{var l=localStorage.getItem(${JSON.stringify(
   LANG_STORAGE_KEY,
 )});if(l==="it"||l==="en"){document.documentElement.lang=l}}catch(e){}})();`;
 
+/* Same trick for an explicit theme override: prefers-color-scheme still
+   drives dark mode with no script at all, this only pins it once someone
+   has actually chosen a side. */
+const themeScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify(
+  THEME_STORAGE_KEY,
+)});if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -83,6 +91,7 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: langScript }} />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="flex min-h-full flex-col">{children}</body>
     </html>

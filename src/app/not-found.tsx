@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { LanguageSwitch } from "@/components/LanguageSwitch";
+import { ThemeSwitch } from "@/components/ThemeSwitch";
 import { ui } from "@/lib/i18n";
 import { useLanguage } from "@/lib/language";
 
@@ -19,7 +20,10 @@ export default function NotFound() {
           AutoDay
           <span className="caret ml-1" aria-hidden="true" />
         </Link>
-        <LanguageSwitch />
+        <div className="flex items-center gap-3">
+          <ThemeSwitch />
+          <LanguageSwitch />
+        </div>
       </header>
 
       <div>

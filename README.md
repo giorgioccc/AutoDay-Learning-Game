@@ -77,16 +77,21 @@ objects, so both languages must have the same number of bullets.
 - The filters use the same external-store trick for the same reason. Stored
   values are validated against the canonical category and level lists on read,
   so a renamed category cannot resurrect itself out of someone's browser.
-- **`localStorage` holds the language preference and the filters, and nothing
-  else.** No accounts, no progress, no favourites, no analytics — by design.
+- **`localStorage` holds the language preference, the filters and an optional
+  theme override, and nothing else.** No accounts, no progress, no
+  favourites, no analytics — by design.
 - The session timer is opt-in, offered only once there is something to time,
   and derived from a stored end timestamp rather than accumulated by an
   interval — a backgrounded tab or a closed laptop lid cannot make it wrong.
   When it runs out it says so and keeps counting; nothing beeps, blocks or
   hides. Both timestamps live in one piece of state so no clock is read
   during render.
-- Dark mode follows `prefers-color-scheme` only. There is no toggle, because a
-  toggle would need a third storage key.
+- Dark mode follows `prefers-color-scheme` by default and needs no script to
+  do so. `ThemeSwitch` can pin it explicitly to light or dark — that choice
+  lives on `<html data-theme>`, applied before first paint the same way the
+  language is, and is the one case where the CSS declares the dark tokens
+  twice (once behind the media query, once behind the attribute) since a
+  stylesheet can't "or" the two together.
 - All text meets WCAG AA contrast in both palettes, verified by walking the
   rendered DOM with every disclosure open. `--on-accent` exists because the
   dark palette's accent is a pale lavender and white text on it is unreadable.

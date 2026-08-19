@@ -29,6 +29,9 @@ type UiStrings = {
   copied: Localized;
   minutesShort: Localized;
   languageLabel: Localized;
+  themeLabel: Localized;
+  themeLight: Localized;
+  themeDark: Localized;
   howItWorksTitle: Localized;
   howItWorks: Localized[];
   noAnswersTitle: Localized;
@@ -128,6 +131,9 @@ export const ui: UiStrings = {
   copied: { en: "Copied", it: "Copiato" },
   minutesShort: { en: "min", it: "min" },
   languageLabel: { en: "Language", it: "Lingua" },
+  themeLabel: { en: "Theme", it: "Tema" },
+  themeLight: { en: "Light", it: "Chiaro" },
+  themeDark: { en: "Dark", it: "Scuro" },
   howItWorksTitle: { en: "How it works", it: "Come funziona" },
   howItWorks: [
     {

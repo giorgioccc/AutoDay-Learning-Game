@@ -2,8 +2,13 @@
 
 /* ---------------------------------------------------------------
    Design tokens. Light is the default and the one that must look
-   right; dark mirrors it via prefers-color-scheme only (a toggle
-   would need a second localStorage key, which the product forbids).
+   right. Dark follows prefers-color-scheme with no script required;
+   the ThemeSwitch pins it explicitly via <html data-theme>, storing
+   that one extra choice under THEME_STORAGE_KEY only once someone
+   actually clicks it. Same dark values, declared twice on purpose:
+   once behind the media query (nobody has chosen a side) and once
+   behind the attribute (somebody has), because CSS has no "OR"
+   between a media feature and a selector.
    --------------------------------------------------------------- */
 
 :root {
@@ -30,7 +35,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #10151c;
     --surface: #171d26;
     --surface-sunken: #1c232e;
@@ -46,6 +51,23 @@
     --success: #6cbdb3;
     --success-soft: #1c2e2d;
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #10151c;
+  --surface: #171d26;
+  --surface-sunken: #1c232e;
+  --text: #dfe6ef;
+  --text-muted: #a3b1c4;
+  --text-faint: #8b9aae;
+  --border: #2a3341;
+  --border-strong: #3a4657;
+  --accent: #97a3ec;
+  --accent-hover: #aab4f1;
+  --accent-soft: #232a42;
+  --on-accent: #10151c;
+  --success: #6cbdb3;
+  --success-soft: #1c2e2d;
 }
 
 @theme inline {
